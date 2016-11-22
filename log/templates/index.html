@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% if user.is_authenticated %}
+<p>nihao</p>
+   <h1>BGE Admin System</h1>
+   <a href="/potential_stu/">Potential Student</a><br>
+   <a href="/current_stu/">Current Student</a><br>
+   <a href="/books_fbv_user/">Host Family</a><br>
+<a href="{% url 'logout' %}">logout</a>
+{% else %}
+<p>qingdenglu</p>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="register" method="post">
+    {% csrf_token %}
+    {{ user_form }}
+    <button type="submit">register</button>
+    <a href="register">register</a>
+    <a href="/">homepage</a>
+</form>
+</body>
+</html>
