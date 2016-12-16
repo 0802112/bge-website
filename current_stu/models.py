@@ -12,12 +12,10 @@ MARITAL_STATUS = (
 class StudentInfo(models.Model):
     id = models.AutoField(primary_key=True)
 
-    test = models.TextField(blank=True)
-
     firstname = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
-    middlename = models.CharField(max_length=30)
-    englishname = models.CharField(max_length=30)
+    middlename = models.CharField(max_length=30, blank=True)
+    englishname = models.CharField(max_length=30, blank=True)
     dob = models.DateField()
     birthplace = models.CharField(max_length=50)
     apply_grade = models.CharField(max_length=2)
@@ -31,33 +29,33 @@ class StudentInfo(models.Model):
 
 
 class FatherInfo(models.Model):
-    id = models.ForeignKey(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
-    lastname = models.CharField(max_length=30)
-    firstname = models.CharField(max_length=30)
-    marital = models.CharField(max_length=10, choices=MARITAL_STATUS, default='MARRIED',)
-    occupation = models.CharField(max_length=50)
-    employer = models.CharField(max_length=50)
-    education = models.CharField(max_length=50)
-    day_phone = models.CharField(max_length=20)
-    email = models.EmailField()
+    lastname = models.CharField(max_length=30, blank=True)
+    firstname = models.CharField(max_length=30, blank=True)
+    marital = models.CharField(max_length=10, choices=MARITAL_STATUS, default='MARRIED', blank=True)
+    occupation = models.CharField(max_length=50, blank=True)
+    employer = models.CharField(max_length=50, blank=True)
+    education = models.CharField(max_length=50, blank=True)
+    day_phone = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
 
 
 class MotherInfo(models.Model):
-    id = models.ForeignKey(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
-    lastname = models.CharField(max_length=30)
-    firstname = models.CharField(max_length=30)
-    marital = models.CharField(max_length=10, choices=MARITAL_STATUS, default='MARRIED',)
-    occupation = models.CharField(max_length=50)
-    employer = models.CharField(max_length=50)
-    education = models.CharField(max_length=50)
-    day_phone = models.CharField(max_length=20)
-    email = models.EmailField()
+    lastname = models.CharField(max_length=30, blank=True)
+    firstname = models.CharField(max_length=30, blank=True)
+    marital = models.CharField(max_length=10, choices=MARITAL_STATUS, default='MARRIED', blank=True)
+    occupation = models.CharField(max_length=50, blank=True)
+    employer = models.CharField(max_length=50, blank=True)
+    education = models.CharField(max_length=50, blank=True)
+    day_phone = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
 
 
 class ContactInfo(models.Model):
-    id = models.ForeignKey(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
     CONTACT_TIME = (
         ('MORNING', 'Mornings'),
@@ -68,46 +66,48 @@ class ContactInfo(models.Model):
     )
 
     address = models.CharField(max_length=200)
-    apt = models.CharField(max_length=10)
+    apt = models.CharField(max_length=10, blank=True)
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     country = models.CharField(max_length=30)
     postcode = models.CharField(max_length=10)
-    home_phone = models.CharField(max_length=20)
+    home_phone = models.CharField(max_length=20, blank=True)
     mobile_phone = models.CharField(max_length=20)
-    fax = models.CharField(max_length=20)
-    email = models.EmailField()
+    fax = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
 
 
 class AdditionalHousehold(models.Model):
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
-    name1 = models.CharField(max_length=50)
-    gender1 = models.CharField(max_length=6)
-    relationship1 = models.CharField(max_length=10)
-    school1 = models.CharField(max_length=50)
-    age1 = models.IntegerField(max_length=3)
-    grade1 = models.CharField(max_length=50)
+    name1 = models.CharField(max_length=50, blank=True)
+    gender1 = models.CharField(max_length=6, blank=True)
+    relationship1 = models.CharField(max_length=10, blank=True)
+    school1 = models.CharField(max_length=50, blank=True)
+    age1 = models.IntegerField(blank=True)
+    grade1 = models.CharField(max_length=50, blank=True)
 
-    name2 = models.CharField(max_length=50)
-    gender2 = models.CharField(max_length=6)
-    relationship2 = models.CharField(max_length=10)
-    school2 = models.CharField(max_length=50)
-    age2 = models.IntegerField(max_length=3)
-    grade2 = models.CharField(max_length=50)
+    name2 = models.CharField(max_length=50, blank=True)
+    gender2 = models.CharField(max_length=6, blank=True)
+    relationship2 = models.CharField(max_length=10, blank=True)
+    school2 = models.CharField(max_length=50, blank=True)
+    age2 = models.IntegerField(blank=True)
+    grade2 = models.CharField(max_length=50, blank=True)
 
-    name3 = models.CharField(max_length=50)
-    gender3 = models.CharField(max_length=6)
-    relationship3 = models.CharField(max_length=10)
-    school3 = models.CharField(max_length=50)
-    age3 = models.IntegerField(max_length=3)
-    grade3 = models.CharField(max_length=50)
+    name3 = models.CharField(max_length=50, blank=True)
+    gender3 = models.CharField(max_length=6, blank=True)
+    relationship3 = models.CharField(max_length=10, blank=True)
+    school3 = models.CharField(max_length=50, blank=True)
+    age3 = models.IntegerField(blank=True)
+    grade3 = models.CharField(max_length=50, blank=True)
 
 
 class SchoolInfo(models.Model):
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
     currentschool = models.CharField(max_length=255)
     type = models.CharField(max_length=10)
-    grade = models.IntegerField(max_length=2)
+    grade = models.IntegerField()
     gpa = models.CharField(max_length=3)
     rank = models.CharField(max_length=50)
     enrolldate = models.CharField(max_length=20)
@@ -117,35 +117,39 @@ class SchoolInfo(models.Model):
     country = models.CharField(max_length=30)
     post = models.CharField(max_length=10)
     phone = models.CharField(max_length=20)
-    fax = models.CharField(max_length=20)
+    fax = models.CharField(max_length=20, blank=True)
     email = models.EmailField()
 
 
 class TestScore(models.Model):
-    slep = models.IntegerField()
-    slepdate = models.CharField(max_length=20)
-    toefl = models.IntegerField()
-    toefldate = models.CharField(max_length=20)
-    ssat = models.IntegerField()
-    ssatdate = models.CharField(max_length=20)
-    sat = models.IntegerField()
-    satdate = models.CharField(max_length=20)
-    act = models.IntegerField()
-    actdate = models.CharField(max_length=20)
-    other = models.IntegerField()
-    otherdate = models.CharField(max_length=20)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+
+    slep = models.IntegerField(blank=True)
+    slepdate = models.CharField(max_length=20, blank=True)
+    toefl = models.IntegerField(blank=True)
+    toefldate = models.CharField(max_length=20, blank=True)
+    ssat = models.IntegerField(blank=True)
+    ssatdate = models.CharField(max_length=20, blank=True)
+    sat = models.IntegerField(blank=True)
+    satdate = models.CharField(max_length=20, blank=True)
+    act = models.IntegerField(blank=True)
+    actdate = models.CharField(max_length=20, blank=True)
+    other = models.IntegerField(blank=True)
+    otherdate = models.CharField(max_length=20, blank=True)
 
 
 class History(models.Model):
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
     visit = models.CharField(max_length=3)
-    when = models.CharField(max_length=255)
-    long = models.CharField(max_length=50)
-    reason = models.CharField(max_length=255)
-    rate = models.CharField(max_length=50)
+    when = models.CharField(max_length=255, blank=True)
+    long = models.CharField(max_length=50, blank=True)
+    reason = models.CharField(max_length=255, blank=True)
+    rate = models.CharField(max_length=50, blank=True)
 
 
 class Profile(models.Model):
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
     role_model = models.CharField(max_length=255)
     dream_job = models.CharField(max_length=255)
@@ -171,7 +175,7 @@ class Profile(models.Model):
 
 class MultipleChoice(models.Model):
 
-    id = models.ForeignKey(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
 
     ###############
     # Personality Type
@@ -187,7 +191,7 @@ class MultipleChoice(models.Model):
         ('TRADITIONAL', 'Traditional'),
         ('OTHER', 'Other')
     )
-    personality = models.CharField(max_length=20, choices=PERSONALITY, blank=True, null=True)
+    personality = models.CharField(max_length=20, choices=PERSONALITY, blank=True)
 
     ###############
     # Eating Habits
@@ -203,7 +207,7 @@ class MultipleChoice(models.Model):
         ('SOY', 'Soy'),
         ('OR', 'Other')
     )
-    eat = models.CharField(max_length=30, choices=EAT, blank=True, null=True)
+    eat = models.CharField(max_length=30, choices=EAT, blank=True)
 
     NOT_EAT = (
         ('FRUIT', 'Fruits'),
@@ -217,7 +221,7 @@ class MultipleChoice(models.Model):
         ('SOY', 'Soy'),
         ('OR', 'Other')
     )
-    not_eat = models.CharField(max_length=30, choices=NOT_EAT, blank=True, null=True)
+    not_eat = models.CharField(max_length=30, choices=NOT_EAT, blank=True)
 
     SPECIAL_DIET = (
         ('DAIRY', 'Dairy_Free'),
@@ -226,7 +230,7 @@ class MultipleChoice(models.Model):
         ('VEGAN', 'Vegan'),
         ('OR', 'Other')
     )
-    special_diet = models.CharField(max_length=20, choices=SPECIAL_DIET, blank=True, null=True)
+    special_diet = models.CharField(max_length=20, choices=SPECIAL_DIET, blank=True)
 
     ALLERGY = (
         ('NUTS', 'Nuts'),
@@ -236,7 +240,7 @@ class MultipleChoice(models.Model):
         ('WHEAT', 'Wheat'),
         ('OR', 'Other')
     )
-    allergy = models.CharField(max_length=20, choices=ALLERGY, blank=True, null=True)
+    allergy = models.CharField(max_length=20, choices=ALLERGY, blank=True)
 
     RESTAURANT = (
         ('CH', 'Chinese'),
@@ -247,13 +251,13 @@ class MultipleChoice(models.Model):
         ('IY', 'Italian'),
         ('OR', 'Other')
     )
-    restaurant = models.CharField(max_length=2, choices=RESTAURANT, blank=True, null=True)
+    restaurant = models.CharField(max_length=2, choices=RESTAURANT, blank=True)
 
     OWN_MEAL = (
         ('YES', 'Yes'),
         ('NO', 'No')
     )
-    own_meal = models.CharField(max_length=3, choices=OWN_MEAL, blank=True, null=True)
+    own_meal = models.CharField(max_length=3, choices=OWN_MEAL, blank=True)
 
     ##############
     # Preferences
@@ -263,26 +267,26 @@ class MultipleChoice(models.Model):
         ('ALL', 'Like all animals'),
         ('NO', "Don't like animals")
     )
-    pet = models.CharField(max_length=3, choices=PET, blank=True, null=True)
+    pet = models.CharField(max_length=3, choices=PET, blank=True)
 
     SMOKE = (
         ('YES', 'yes'),
         ('NO', 'no')
     )
-    smoke = models.CharField(max_length=3, choices=SMOKE, blank=True, null=True)
+    smoke = models.CharField(max_length=3, choices=SMOKE, blank=True)
 
     SMOKE_FREE = (
         ('YES', 'yes'),
         ('NO', 'no')
     )
-    smoke_free = models.CharField(max_length=3, choices=SMOKE_FREE, blank=True, null=True)
+    smoke_free = models.CharField(max_length=3, choices=SMOKE_FREE, blank=True)
 
     RElIGIOUS_SERVICE = (
         ('YES', 'Yes'),
         ('NO', 'No'),
         ('DCARE', "Don't care")
     )
-    religious_service = models.CharField(max_length=5, choices=RElIGIOUS_SERVICE, blank=True, null=True)
+    religious_service = models.CharField(max_length=10, choices=RElIGIOUS_SERVICE, blank=True)
 
     WEEKDAY_CURFEW = (
         ('9', '9PM'),
@@ -290,7 +294,7 @@ class MultipleChoice(models.Model):
         ('11', '11PM'),
         ('12', '12MM')
     )
-    weekday_curfew = models.CharField(max_length=2, choices=WEEKDAY_CURFEW, blank=True, null=True)
+    weekday_curfew = models.CharField(max_length=5, choices=WEEKDAY_CURFEW, blank=True)
 
     WEEKEND_CURFEW = (
         ('11', '11PM'),
@@ -298,7 +302,7 @@ class MultipleChoice(models.Model):
         ('1', '1AM'),
         ('2', '2AM')
     )
-    weekend_curfew = models.CharField(max_length=2, choices=WEEKEND_CURFEW, blank=True, null=True)
+    weekend_curfew = models.CharField(max_length=5, choices=WEEKEND_CURFEW, blank=True)
 
 
 #######################################################################################
@@ -306,7 +310,7 @@ class MultipleChoice(models.Model):
 
 class ShortAnswer(models.Model):
 
-    id = models.ForeignKey(StudentInfo, on_delete=models.CASCADE, primary_key=True)
+    id = models.OneToOneField(StudentInfo, on_delete=models.CASCADE, primary_key=True)
     # from the last page of application form
     question1 = models.TextField(blank=True, help_text="Please share with us any academic or extracurricular \
                                                 activities, interests, or hobbies you are involved in or enjoy doing.")

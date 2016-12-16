@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import PotentialStu, CounsellingInfo
-from .forms import PotentialForm, CounsellingForm
+from .forms import PotentialForm, CounsellingForm, ConfirmForm
 
 
 # Create your views here.
@@ -18,6 +18,9 @@ def new_stu(request):
             post2 = form2.save(commit=False)
             post2.id = post1
             post2.save()
+        else:
+            return HttpResponse('error form')
+
     else:
         form1 = PotentialForm()
         form2 = CounsellingForm()
@@ -35,7 +38,7 @@ def update_stu(request, pk):
             post2 = form2.save(commit=False)
             post2.id = post1
             post2.save()
-            return redirect('stu_list')
+            return redirect('potential_stu_list')
     else:
         form1 = PotentialForm(instance=stu)
         form2 = CounsellingForm(instance=consult)
@@ -44,18 +47,18 @@ def update_stu(request, pk):
 
 def delete_stu(request, pk):
     stu = get_object_or_404(PotentialStu, pk=pk)
-    consult = get_object_or_404(CounsellingInfo, pk=pk)
     if request.method == 'POST':
-        stu.delete()
-        return redirect('stu_list')
-    return render(request, 'potential_stu/student_delete_confirm.html', {'object': stu})
+        if request.POST['choice'] == "yes":
+                stu.delete()
+                return redirect('potential_stu_list')
+        else:
+            return redirect('potential_stu_list')
+
+    else:
+        form1 = ConfirmForm()
+    return render(request, 'potential_stu/student_delete_confirm.html', {'form1': form1})
 
 
 def detail_stu(request, pk):
     student = get_object_or_404(PotentialStu, pk=pk)
     return render(request, 'potential_stu/student_detail.html', {'student': student})
-#
-#
-# def post_detail(request, pk):
-#     post = get_object_or_404(Potential_Basic, pk=pk)
-#     return render(request, 'blog/post_detail.html', {'post': post})

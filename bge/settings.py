@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'potential_stu',
     'current_stu',
+    'host_family',
     'log',
     'bootstrap3',
 ]

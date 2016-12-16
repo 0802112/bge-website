@@ -1,12 +1,13 @@
 <h1>Potential Student List</h1>
-<a href="{% url 'new_stu' %}">New</a>
+<a href="{% url 'new_potential_stu' %}">New</a>
 <ul>
     {% for student in student_list %}
     <li>
-        {{ student.name }}  {{ student.dob }}
-        <a href="{% url 'update_stu' student.id %}">edit</a>
-        <a href="{% url 'delete_stu' student.id %}">delete</a>
-        <a href="{% url 'detail_stu' student.id %}">detail</a>
+        {{ student.name }}
+        {{ student.dob }}
+        <a href="{% url 'update_potential_stu' student.id %}">edit</a>
+        <a href="{% url 'delete_potential_stu' student.id %}">delete</a>
+        <a href="{% url 'detail_potential_stu' student.id %}">detail</a>
     </li>
     {% endfor %}
 </ul>

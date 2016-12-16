@@ -1,7 +1,29 @@
- <h1>New post</h1>
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        {{ form1.as_p }}
-        {{ form2.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+
+
+{% load bootstrap3 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_messages %}
+
+
+
+
+{% block content %}
+
+<h1>New Potential Student</h1>
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {% bootstrap_form form1 %}
+    {% bootstrap_form form2 %}
+    <div class="button">
+        {% buttons %}
+        <button type="submit" class="btn btn-primary" dis>
+            {% bootstrap_icon "save" %} Save
+        </button>
+        {% endbuttons %}
+    </div>
+</form>
+
+{% endblock %}

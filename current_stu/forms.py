@@ -1,13 +1,14 @@
 from django import forms
 from django.forms import SelectDateWidget
-from .models import StudentInfo, FatherInfo, MotherInfo, ContactInfo, Profile, MultipleChoice, ShortAnswer
+from .models import StudentInfo, FatherInfo, MotherInfo, ContactInfo, AdditionalHousehold, SchoolInfo, TestScore, \
+                    History, Profile, MultipleChoice, ShortAnswer
 
 
 class StudentForm(forms.ModelForm):
 
     class Meta:
         model = StudentInfo
-        fields = ('test', 'firstname', 'lastname', 'middlename', 'englishname', 'dob', 'birthplace', 'apply_grade', \
+        fields = ('firstname', 'lastname', 'middlename', 'englishname', 'dob', 'birthplace', 'apply_grade', \
                   'start_date', 'visa', 'nation', 'i20',)
         widgets = {
             'dob': SelectDateWidget,
@@ -38,11 +39,39 @@ class ContactForm(forms.ModelForm):
                   'fax', 'email',)
 
 
+class AdditionHousehodForm(forms.ModelForm):
+
+    class Meta:
+        model = AdditionalHousehold
+        exclude = ['id']
+
+
+class SchoolInfoForm(forms.ModelForm):
+
+    class Meta:
+        model = SchoolInfo
+        exclude = ['id']
+
+
+class TestScoreForm(forms.ModelForm):
+
+    class Meta:
+        model = TestScore
+        exclude = ['id']
+
+
+class HistoryForm(forms.ModelForm):
+
+    class Meta:
+        model = History
+        exclude = ['id']
+
+
 class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        exclude = ['id']
 
 
 class MultiChoiceForm(forms.ModelForm):
@@ -50,15 +79,15 @@ class MultiChoiceForm(forms.ModelForm):
     class Meta:
         model = MultipleChoice
         exclude = ['id']
-        widgets = {
-            'personality': forms.CheckboxSelectMultiple,
-            'eat': forms.CheckboxSelectMultiple,
-            'not_eat': forms.CheckboxSelectMultiple,
-            'special_diet': forms.CheckboxSelectMultiple,
-            'allergy': forms.CheckboxSelectMultiple,
-            'restaurant': forms.CheckboxSelectMultiple,
-            'pet': forms.CheckboxSelectMultiple
-        }
+        # widgets = {
+        #     'personality': forms.CheckboxSelectMultiple,
+        #     'eat': forms.CheckboxSelectMultiple,
+        #     'not_eat': forms.CheckboxSelectMultiple,
+        #     'special_diet': forms.CheckboxSelectMultiple,
+        #     'allergy': forms.CheckboxSelectMultiple,
+        #     'restaurant': forms.CheckboxSelectMultiple,
+        #     'pet': forms.CheckboxSelectMultiple
+        # }
 
 
 class ShortAnswerForm(forms.ModelForm):

@@ -1,0 +1,14 @@
+<h1>Host Family List</h1>
+<a href="{% url 'new_host' %}">New</a>
+<ul>
+    {% for host in host_list %}
+    <li>
+        {{ host.name }}
+        <a href="{% url 'detail_host' host.id %}">detail</a>
+        <a href="{% url 'update_host' host.id %}">update</a>
+        <a href="{% url 'delete_host' host.id %}">delete</a>
+
+    </li>
+    {% endfor %}
+</ul>
+

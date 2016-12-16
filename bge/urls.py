@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^', include('log.urls')),  # do not include $ here
     url(r'^potential_stu/', include('potential_stu.urls')),
     url(r'^current_stu/', include('current_stu.urls')),
+    url(r'^host_family/', include('host_family.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 

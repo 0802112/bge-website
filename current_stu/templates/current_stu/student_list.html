@@ -4,9 +4,9 @@
     {% for student in student_list %}
     <li>
         {{ student.name }}  {{ student.dob }}
-        <a href="{% url 'update_stu' student.id %}">edit</a>
-        <a href="{% url 'delete_stu' student.id %}">delete</a>
-        <a href="{% url 'detail_stu' student.id %}">detail</a>
+        <a href="{% url 'detail_current_stu' student.id %}">detail</a>
+        <a href="{% url 'update_current_stu' student.id %}">update</a>
+        <a href="{% url 'delete_current_stu' student.id %}">delete</a>
     </li>
     {% endfor %}
 </ul>
