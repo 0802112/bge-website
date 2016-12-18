@@ -1,8 +1,87 @@
-   <div class="post">
+{% extends 'base.html' %}
 
-        <h1>{{ student.title }}</h1>
-        <p>{{ student.dob }}</p>
-        <p>{{ student.dob }}</p>
-        <p>{{ student.agent }}</p>
-       {{student.id}}
-    </div>
+{% block content %}
+
+
+
+<style type="text/css">
+#wrap {
+   width:600px;
+   margin:0 auto;
+}
+.left_col {
+   float:left;
+   width:300px;
+}
+.right_col {
+   float:right;
+   width:300px;
+}
+</style>
+
+<div id="wrap">
+<table class="table table-hover table-strip">
+
+
+    <tbody>
+      <tr>
+          <h2>Student Info</h2>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ student.name }} </div>
+          <div class="left_col"> Agent: </div>
+          <div class="right_col"> {{ student.agent }} </div>
+          <div class="left_col"> Date of Birth: </div>
+          <div class="right_col"> {{ student.dob }} </div>
+          <div class="left_col"> Gender: </div>
+          <div class="right_col"> {{ student.gender }} </div>
+          <div class="left_col"> Student's Phone: </div>
+          <div class="right_col"> {{ student.phone }} </div>
+          <div class="left_col"> Student's Email: </div>
+          <div class="right_col"> {{ student.email }} </div>
+          <div class="left_col"> Parents' Phone: </div>
+          <div class="right_col"> {{ student.parent_phone }} </div>
+          <div class="left_col"> Parents' Email: </div>
+          <div class="right_col"> {{ student.parent_email }} </div>
+          <div class="left_col"> City: </div>
+          <div class="right_col"> {{ student.city }} </div>
+          <div class="left_col"> State: </div>
+          <div class="right_col"> {{ student.state }} </div>
+          <div class="left_col"> School: </div>
+          <div class="right_col"> {{ student.school }} </div>
+          <div class="left_col"> Grade: </div>
+          <div class="right_col"> {{ student.grade }} </div>
+          <div class="left_col"> GPA: </div>
+          <div class="right_col"> {{ student.gpa }} </div>
+          <div class="left_col"> TOEFL Score: </div>
+          <div class="right_col"> {{ student.toefl }} </div>
+          <h2>Counselling Info</h2>
+          <div class="left_col"> Applying Semester: </div>
+          <div class="right_col"> {{ consult.semester }} </div>
+          <div class="left_col"> Applying Grade: </div>
+          <div class="right_col"> {{ consult.apply_grade }} </div>
+          <div class="left_col"> First School: </div>
+          <div class="right_col"> {{ consult.school1 }} </div>
+          <div class="left_col"> Second School: </div>
+          <div class="right_col"> {{ consult.school2 }} </div>
+          <div class="left_col"> Third Schoo;: </div>
+          <div class="right_col"> {{ consult.school3 }} </div>
+          <div class="left_col"> Note: </div>
+          <div class="right_col"> {{ consult.note }} </div>
+          <div class="left_col"> Counsellor: </div>
+          <div class="right_col"> {{ consult.counsellor }} </div>
+          <div class="left_col"> Counselling Date: </div>
+          <div class="right_col"> {{ consult.date }} </div>
+          <h2>Application Info</h2>
+          <div class="left_col"> Applying Status: </div>
+          <div class="right_col"> {{ consult.Status }} </div>
+          <div class="left_col"> Applying Fee: </div>
+          <div class="right_col"> {{ consult.fee }} </div>
+          <div class="left_col"> Payment Date: </div>
+          <div class="right_col"> {{ consult.pay_date }} </div>
+      </tr>
+    </tbody>
+
+ </table>
+</div>
+
+{% endblock %}

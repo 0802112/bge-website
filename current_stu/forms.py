@@ -88,6 +88,15 @@ class MultiChoiceForm(forms.ModelForm):
         #     'restaurant': forms.CheckboxSelectMultiple,
         #     'pet': forms.CheckboxSelectMultiple
         # }
+        widgets = {
+            'personality': forms.RadioSelect,
+            'eat': forms.RadioSelect,
+            'not_eat': forms.RadioSelect,
+            'special_diet': forms.RadioSelect,
+            'allergy': forms.RadioSelect,
+            'restaurant': forms.RadioSelect,
+            'pet': forms.RadioSelect,
+        }
 
 
 class ShortAnswerForm(forms.ModelForm):

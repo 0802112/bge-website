@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .forms import UserForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -8,33 +8,39 @@ from django.contrib import auth
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, 'index.html')
+        return render(request, 'log/index.html')
     else:
-        return render(request, 'login.html')
+        # form = LoginForm
+        # return render(request, 'login.html', {'form': form})
+        return redirect('login')
 
 
 def register(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         if user_form.is_valid():
+            lastname = user_form.cleaned_data['lastname']
+            firstname = user_form.cleaned_data['firstname']
+            email = user_form.cleaned_data['email']
             username = user_form.cleaned_data['username']
             password = user_form.cleaned_data['password']
-            email = user_form.cleaned_data['email']
+
             if User.objects.filter(username=username):
                 return HttpResponse('existed')
             else:
-                user = User.objects.create_user(username, email, password)
+                user = User.objects.create_user(username=username, password=password, email=email,
+                                                first_name=firstname, last_name=lastname)
                 user.is_superuser = True
                 user.is_staff = True
                 user.save()
                 user = authenticate(username=username, password=password)
                 auth.login(request, user)
-                return render(request, 'index.html')
+                return render(request, 'log/index.html')
         else:
-            return render(request, 'failure.html', {'reason': user_form.errors})
+            return render(request, 'log/failure.html', {'reason': user_form.errors})
     else:
         user_form = UserForm()
-    return render(request, 'register.html', {'user_form': user_form})
+    return render(request, 'log/register.html', {'user_form': user_form})
 
 
 def login(request):
@@ -48,16 +54,16 @@ def login(request):
             if User.objects.filter(username=username):
                 if user is not None and user.is_active:
                     auth.login(request, user)
-                    response = render(request, 'index.html', {'form': login_form})
+                    response = render(request, 'log/index.html', {'form': login_form})
                     response.set_cookie('username', username, 3600)
                     return response
             else:
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'log/login.html', {'form': form})
         else:
-            return render(request, 'login.html', {'form': form})
-    return render(request, 'login.html', {'form': form})
+            return render(request, 'log/login.html', {'form': form})
+    return render(request, 'log/login.html', {'form': form})
 
 
 def logout(request):
     auth.logout(request)
-    return render(request, 'login.html', locals())
+    return redirect('login')

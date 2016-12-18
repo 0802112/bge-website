@@ -1,0 +1,39 @@
+{% load static %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" href="{% static 'bge-icon.png' %}">
+    <title>Boston Global Education</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'register.css' %}" type="text/css"  rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="text-title">
+            <h2>Create account</h2>
+        </div>
+        <form action="register" method="post">
+            {% csrf_token %}
+            {% bootstrap_form user_form %}
+            <button type="submit" class="btn btn-primary btn-block">Create your account</button>
+            <div class="back-button">
+                <a href="{% url 'index' %}" class="btn btn-primary btn-block">Back</a>
+            </div>
+        </form>
+    </div>
+  </body>
+</html>

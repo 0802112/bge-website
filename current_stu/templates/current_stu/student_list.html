@@ -1,3 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>Potential Student List</h1>
 <a href="{% url 'new_stu' %}">New</a>
 <ul>
@@ -10,4 +12,4 @@
     </li>
     {% endfor %}
 </ul>
-
+{% endblock %}

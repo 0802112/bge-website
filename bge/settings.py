@@ -25,7 +25,8 @@ SECRET_KEY = '+n-d(otey&2$+i%r-7oz!bd9!h0e9!^s6=fudwbc%8xb%=)2af'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Fot test only, configure ALLOWED_HOST when deploying
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'bge.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [(os.path.join(BASE_DIR, 'static', 'templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,10 +119,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [STATIC_DIR, ]
+# =============================
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static', 'css'),
+    os.path.join(BASE_DIR, 'static', 'media'),
+]
+
+# Template Location
+# if DEBUG:
+#     MEDIA_URL = '/media/'
+#     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-onlu")
+#     MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
+#     STATICFILES_DIRS = (
+#         os.path.join(os.path.dirname(BASE_DIR), "static", "static")
+#     )
+
+

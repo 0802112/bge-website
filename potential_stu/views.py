@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from .models import PotentialStu, CounsellingInfo
 from .forms import PotentialForm, CounsellingForm, ConfirmForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
 def stu_list(request):
     student_list = PotentialStu.objects.all()
     return render(request, 'potential_stu/student_list.html', {'student_list': student_list})
@@ -61,4 +63,5 @@ def delete_stu(request, pk):
 
 def detail_stu(request, pk):
     student = get_object_or_404(PotentialStu, pk=pk)
-    return render(request, 'potential_stu/student_detail.html', {'student': student})
+    consult = get_object_or_404(CounsellingInfo, pk=pk)
+    return render(request, 'potential_stu/student_detail.html', {'student': student, 'consult': consult})

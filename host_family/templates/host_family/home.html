@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <h1>Host Family List</h1>
 <a href="{% url 'new_host' %}">New</a>
 <ul>
@@ -11,4 +14,4 @@
     </li>
     {% endfor %}
 </ul>
-
+{% endblock %}

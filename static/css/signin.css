@@ -1,0 +1,36 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+.imgContainer {
+    text-align: center;
+    max-width=350px;
+    padding = 25px;
+    margin: 0 auto;
+}
+.form-signin {
+  max-width: 350px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.sign-up {
+  max-width: 350px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 0 auto;
+}
+.sign-up .form-control {
+  position: relative;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
