@@ -73,14 +73,18 @@
           <div class="right_col"> {{ consult.date }} </div>
           <h2>Application Info</h2>
           <div class="left_col"> Applying Status: </div>
-          <div class="right_col"> {{ consult.Status }} </div>
+          <div class="right_col"> {{ consult.status }} </div>
           <div class="left_col"> Applying Fee: </div>
           <div class="right_col"> {{ consult.fee }} </div>
           <div class="left_col"> Payment Date: </div>
           <div class="right_col"> {{ consult.pay_date }} </div>
       </tr>
     </tbody>
-
+    <div class="function-button">
+        <a class="btn btn-primary" href="{% url 'potential_stu_list' %}">Back</a>
+        <a class="btn btn-warning" href="{% url 'update_potential_stu' student.id %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'delete_potential_stu' student.id %}">Delete</a>
+    </div>
  </table>
 </div>
 

@@ -58,7 +58,7 @@ def delete_stu(request, pk):
 
     else:
         form1 = ConfirmForm()
-    return render(request, 'potential_stu/student_delete_confirm.html', {'form1': form1})
+    return render(request, 'delete_confirm.html', {'form1': form1})
 
 
 def detail_stu(request, pk):

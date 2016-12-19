@@ -1,10 +1,44 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form1.as_p }}
-    {{ form2.as_p }}
-    {{ form3.as_p }}
-    {{ form4.as_p }}
-    {{ form5.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+{% extends 'base.html' %}
 
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<style>
+    .container {
+    display:inline-block;
+}
+</style>
+
+<div class="col-md-6 col-md-offset-3">
+    <h1>Create/Edit Host Family</h1>
+    <div class="">
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        <h4>Host Family</h4>
+        {% bootstrap_form form1 %}
+        <br>
+        <h4>Host Father Information</h4>
+        {% bootstrap_form form2 %}
+        <br>
+        <h4>Host Mother information</h4>
+        {% bootstrap_form form3 %}
+        <br>
+        <h4>Contact Information</h4>
+        {% bootstrap_form form4 %}
+        <br>
+        <h4>Additional Household Members</h4>
+        {% bootstrap_form form5 %}
+        <div class="button">
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% bootstrap_icon "save" %} Save
+            </button>
+            {% endbuttons %}
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

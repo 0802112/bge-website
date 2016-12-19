@@ -48,12 +48,12 @@ class ConfirmForm(forms.Form):
 
 def home(request, template_name='host_family/home.html'):
     hostname = HostName.objects.all()
-    # hostfather = HostFather.objects.all()
-    # hostmather = HostMother.objects.all()
-    # contact = Contact.objects.all()
-    # additional = Additional.objects.all()
-
-    return render(request, template_name, {'host_list': hostname})
+    hostfather = HostFather.objects.all()
+    hostmather = HostMother.objects.all()
+    contact = Contact.objects.all()
+    additional = Additional.objects.all()
+    # father_name = hostfather.firstname
+    return render(request, template_name, {'host_list': hostname, 'hostfather': hostfather})
 
 
 # ============== CRUD ===================
@@ -101,8 +101,10 @@ def detail_host(request, pk, template_name='host_family/host_detail.html'):
     mother = get_object_or_404(HostMother, pk=pk)
     contact = get_object_or_404(Contact, pk=pk)
     additional = get_object_or_404(Additional, pk=pk)
+    father_name = father.firstname
     return render(request, template_name, {'host': host, 'father': father, 'mother': mother,
-                                           'contact': contact, 'additional': additional})
+                                           'contact': contact, 'additional': additional,
+                                            'father_name': father_name})
 
 
 def update_host(request, pk, template_name='host_family/host_form.html'):
@@ -143,7 +145,7 @@ def update_host(request, pk, template_name='host_family/host_form.html'):
                                            'form4': form4, 'form5': form5})
 
 
-def delete_host(request, pk, template_name='host_family/host_delete_confirm.html'):
+def delete_host(request, pk, template_name='delete_confirm.html'):
     host = get_object_or_404(HostName, pk=pk)
     if request.method == 'POST':
         if request.POST['choice'] == 'yes':

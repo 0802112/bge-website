@@ -1,17 +1,37 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<h1>Host Family List</h1>
-<a href="{% url 'new_host' %}">New</a>
-<ul>
-    {% for host in host_list %}
-    <li>
-        {{ host.name }}
-        <a href="{% url 'detail_host' host.id %}">detail</a>
-        <a href="{% url 'update_host' host.id %}">update</a>
-        <a href="{% url 'delete_host' host.id %}">delete</a>
+<h1>Host Family Main Page</h1>
+<a class="btn btn-primary" href="{% url 'new_host' %}">Create New Host Family</a>
 
-    </li>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Host Family</th>
+        <th>Host Father</th>
+        <th>Host Mother</th>
+        <th>Phone</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    {% for host in host_list %}
+
+    <tbody>
+      <tr>
+        <th>{{ host.name }}</th>
+        <th>{{ father.firstname }}</th>
+
+        <div class="button-wrapper">
+            <th><a class="btn btn-primary" href="{% url 'detail_host' host.id %}">Detail</a></th>
+            <th><a class="btn btn-info" href="{% url 'update_host' host.id %}">Edit</a></th>
+            <th><a class="btn btn-danger" href="{% url 'delete_host' host.id %}">Delete</a></th>
+        </div>
+      </tr>
+    </tbody>
+
     {% endfor %}
-</ul>
+ </table>
+
 {% endblock %}
+
+

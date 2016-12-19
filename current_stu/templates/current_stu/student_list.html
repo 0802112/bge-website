@@ -1,15 +1,35 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-<h1>Potential Student List</h1>
-<a href="{% url 'new_stu' %}">New</a>
-<ul>
+<h1>Current Student List</h1>
+<a class="btn btn-primary" href="{% url 'new_stu' %}">Create New Student</a>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Lastname</th>
+        <th>Fisrstname</th>
+        <th>Date of Birth</th>
+        <th>Applying Grade</th>
+        <th>Options</th>
+      </tr>
+    </thead>
     {% for student in student_list %}
-    <li>
-        {{ student.name }}  {{ student.dob }}
-        <a href="{% url 'detail_current_stu' student.id %}">detail</a>
-        <a href="{% url 'update_current_stu' student.id %}">update</a>
-        <a href="{% url 'delete_current_stu' student.id %}">delete</a>
-    </li>
+    <tbody>
+      <tr>
+        <th>{{ student.lastname }}</th>
+        <th>{{ student.firstname }}</th>
+        <th>{{ student.dob }}</th>
+        <th>{{ student.apply_grade }}</th>
+
+        <div class="button-wrapper">
+            <th><a class="btn btn-primary" href="{% url 'detail_current_stu' student.id %}">Detail</a></th>
+            <th><a class="btn btn-info" href="{% url 'update_current_stu' student.id %}">Edit</a></th>
+            <th><a class="btn btn-danger" href="{% url 'delete_current_stu' student.id %}">Delete</a></th>
+        </div>
+      </tr>
+    </tbody>
     {% endfor %}
-</ul>
+ </table>
+
 {% endblock %}
+

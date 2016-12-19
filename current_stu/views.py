@@ -204,7 +204,7 @@ def update_stu(request, pk, template_name='current_stu/student_form.html'):
                                                              'form10': form10, 'form11': form11})
 
 
-def delete_stu(request, pk, template_name='host_family/stu_delete_confirm.html'):
+def delete_stu(request, pk, template_name='delete_confirm.html'):
     student = get_object_or_404(StudentInfo, pk=pk)
     if request.method == 'POST':
         if request.POST['choice'] == 'yes':

@@ -1,8 +1,141 @@
-  <div class="post">
+{% extends 'base.html' %}
 
-        <h1>{{ host.name }}</h1>
-        <p>{{ father.lastname }}</p>
-        <p>{{ mother.lastname }}</p>
-        <p>{{ contact.address1 }}</p>
+{% block content %}
 
-    </div>
+
+
+<style type="text/css">
+#wrap {
+   width:600px;
+   margin:0 auto;
+}
+.left_col {
+   float:left;
+   width:300px;
+}
+.right_col {
+   float:right;
+   width:300px;
+}
+</style>
+
+<div id="wrap">
+<table class="table table-hover table-strip">
+
+
+    <tbody>
+      <tr>
+          <h2>Host Family</h2>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ host.name }} </div>
+          <h2>Host Father:</h2>
+          <div class="left_col"> Lastname: </div>
+          <div class="right_col"> {{ father.lastname }} </div>
+          <div class="left_col"> Firstname: </div>
+          <div class="right_col"> {{ father.firstname }} </div>
+          <div class="left_col"> Martial Status: </div>
+          <div class="right_col"> {{ father.marital }} </div>
+          <div class="left_col"> Occupation: </div>
+          <div class="right_col"> {{ father.occupation }} </div>
+          <div class="left_col"> Employer: </div>
+          <div class="right_col"> {{ father.employer }} </div>
+          <div class="left_col"> Education: </div>
+          <div class="right_col"> {{ father.education }} </div>
+
+          <h2>Host Mother:</h2>
+          <div class="left_col"> Lastname: </div>
+          <div class="right_col"> {{ mother.lastname }} </div>
+          <div class="left_col"> Firstname: </div>
+          <div class="right_col"> {{ mother.firstname }} </div>
+          <div class="left_col"> Martial Status: </div>
+          <div class="right_col"> {{ mother.marital }} </div>
+          <div class="left_col"> Occupation: </div>
+          <div class="right_col"> {{ mother.occupation }} </div>
+          <div class="left_col"> Employer: </div>
+          <div class="right_col"> {{ mother.employer }} </div>
+          <div class="left_col"> Education: </div>
+          <div class="right_col"> {{ mother.education }} </div>
+
+          <h2>Contact Information</h2>
+          <div class="left_col"> Address: </div>
+          <div class="right_col"> {{ contact.address1 }} </div>
+          <div class="left_col"> Ste/Apt: </div>
+          <div class="right_col"> {{ contact.address2 }} </div>
+          <div class="left_col"> City: </div>
+          <div class="right_col"> {{ contact.city }} </div>
+          <div class="left_col"> State: </div>
+          <div class="right_col"> {{ contact.state }} </div>
+          <div class="left_col"> Type of Home: </div>
+          <div class="right_col"> {{ contact.type }} </div>
+          <div class="left_col"> Home Phone: </div>
+          <div class="right_col"> {{ contact.phone }} </div>
+          <div class="left_col"> Cellular Phone: </div>
+          <div class="right_col"> {{ contact.cellular }} </div>
+          <div class="left_col"> Fax Number: </div>
+          <div class="right_col"> {{ contact.fax }} </div>
+          <div class="left_col"> E-mail: </div>
+          <div class="right_col"> {{ contact.email }} </div>
+
+          <h2>Additional Household Members</h2>
+          <h4>Member 1</h4>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ additional.name1 }} </div>
+          <div class="left_col"> Gender: </div>
+          <div class="right_col"> {{ additional.gender1 }} </div>
+          <div class="left_col"> Relationship: </div>
+          <div class="right_col"> {{ additional.relation1 }} </div>
+          <div class="left_col"> School/Workplace: </div>
+          <div class="right_col"> {{ additional.school1 }} </div>
+          <div class="left_col"> Age: </div>
+          <div class="right_col"> {{ additional.age1 }} </div>
+          <div class="left_col"> Grade/Occupation: </div>
+          <div class="right_col"> {{ additional.grade1 }} </div>
+
+          <h4>Member 2</h4>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ additional.name2 }} </div>
+          <div class="left_col"> Gender: </div>
+          <div class="right_col"> {{ additional.gender2 }} </div>
+          <div class="left_col"> Relationship: </div>
+          <div class="right_col"> {{ additional.relation2 }} </div>
+          <div class="left_col"> School/Workplace: </div>
+          <div class="right_col"> {{ additional.school2 }} </div>
+          <div class="left_col"> Age: </div>
+          <div class="right_col"> {{ additional.age2 }} </div>
+          <div class="left_col"> Grade/Occupation: </div>
+          <div class="right_col"> {{ additional.grade2 }} </div>
+
+          <h4>Member 3</h4>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ additional.name3 }} </div>
+          <div class="left_col"> Gender: </div>
+          <div class="right_col"> {{ additional.gender3 }} </div>
+          <div class="left_col"> Relationship: </div>
+          <div class="right_col"> {{ additional.relation3 }} </div>
+          <div class="left_col"> School/Workplace: </div>
+          <div class="right_col"> {{ additional.school3 }} </div>
+          <div class="left_col"> Age: </div>
+          <div class="right_col"> {{ additional.age3 }} </div>
+          <div class="left_col"> Grade/Occupation: </div>
+          <div class="right_col"> {{ additional.grade3 }} </div>
+
+          <h4>Member 4</h4>
+          <div class="left_col"> Name: </div>
+          <div class="right_col"> {{ additional.name4 }} </div>
+          <div class="left_col"> Gender: </div>
+          <div class="right_col"> {{ additional.gender4 }} </div>
+          <div class="left_col"> Relationship: </div>
+          <div class="right_col"> {{ additional.relation4 }} </div>
+          <div class="left_col"> School/Workplace: </div>
+          <div class="right_col"> {{ additional.school4 }} </div>
+          <div class="left_col"> Age: </div>
+          <div class="right_col"> {{ additional.age4 }} </div>
+          <div class="left_col"> Grade/Occupation: </div>
+          <div class="right_col"> {{ additional.grade4 }} </div>
+      </tr>
+    </tbody>
+
+ </table>
+</div>
+
+{% endblock %}
